@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Diagnostics;
 
 namespace PrimeNumberGeneratorTests
 {
@@ -26,13 +28,25 @@ namespace PrimeNumberGeneratorTests
             919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997
         };
 
+        /// <summary>
+        /// Test that the prime number calculation algorithm is correctly implemented.
+        /// </summary>
         [Test]
         public static void TestPrimeNumbersAreCorrect()
         {
             SieveEratosthenes se = new SieveEratosthenes();
-            var primeNums = se.GetPrimeNumbers(1000);
-            Assert.AreEqual(primeNums, expectedPrimes, "SieveEratosThenes did not produce all expected prime numbers under 1000.");
+            var primeNums = se.CalculatePrimeNumbers(1000);
+            Assert.AreEqual(primeNums.ToList(), expectedPrimes, "SieveEratosThenes did not produce all expected prime numbers under 1000.");
         }
 
+        /// <summary>
+        /// Test that the prime number calculation algorithm can calculate upto int.MaxValue - 1;
+        /// </summary>
+        [Test]
+        public static void TestPrimeNumbersWithIntMax()
+        {
+            SieveEratosthenes se = new SieveEratosthenes();
+            var primeNums = se.CalculatePrimeNumbers(int.MaxValue - 1);
+        }
     }
 }
