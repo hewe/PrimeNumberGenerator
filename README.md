@@ -1,4 +1,5 @@
 # PrimeNumberGenerator
+This is a program that generates all prime numbers within 60s. It implements the Sieve of Eratosthenes algorithm for efficiency.
 
 ### Building solution
 Follow these steps to build the solution:
